@@ -3,9 +3,9 @@ import './App.css'
 
 
 function App() {
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(0)
   
-  const [price, setPrice] = useState(250)
+  const [price, setPrice] = useState(0)
 
 
   function sub(){
@@ -21,10 +21,14 @@ function App() {
   return (
     <>
       <h1>Cart</h1>
-      <div className='card'>
-        <button disabled={count==0} className='button' onClick={sub}>-</button>
-        <p>{count}</p>
-        <button className='button' onClick={add}>+</button>
+      <div className='card' hidden={count>0}>
+        <a onClick={add}> Add</a>
+      </div>
+      <div className='card' hidden={count==0}>
+        
+        <a onClick={sub}>-
+        </a>{count}
+        <a onClick={add}>+</a>
       </div>
       <p id='price1' hidden={price<250} >{price}</p>
     </>
